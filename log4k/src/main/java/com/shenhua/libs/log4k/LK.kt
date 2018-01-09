@@ -3,8 +3,11 @@ package com.shenhua.libs.log4k
 import android.text.TextUtils
 import android.util.Log
 import com.shenhua.libs.log4k.core.BaseHandler
-import com.shenhua.libs.log4k.core.Box.getBox
-import com.shenhua.libs.log4k.core.StringHandler
+import com.shenhua.libs.log4k.core.Box
+import com.shenhua.libs.log4k.handler.BundleHandler
+import com.shenhua.libs.log4k.handler.MapHandler
+import com.shenhua.libs.log4k.handler.PojoHandler
+import com.shenhua.libs.log4k.handler.StringHandler
 import java.util.*
 
 /**
@@ -14,14 +17,17 @@ import java.util.*
 object LK {
 
     val TAG = "LK"
-    private var handlers: LinkedList<BaseHandler> = LinkedList<BaseHandler>()
+    private var handlers: LinkedList<BaseHandler> = LinkedList()
     private var baseHandler: BaseHandler
 
     init {
         handlers.add(StringHandler())
+        handlers.add(MapHandler())
+        handlers.add(BundleHandler())
+        handlers.add(PojoHandler())
         (0 until handlers.size)
                 .filter { it > 0 }
-                .forEach { handlers[it - 1].nextHandler = (handlers[it]) }
+                .forEach { handlers[it - 1].successor = (handlers[it]) }
         baseHandler = handlers[0]
     }
 
@@ -35,27 +41,65 @@ object LK {
     fun d(msg: String?) {
         if (TextUtils.isEmpty(msg!!)) {
             return
+        }
+        val s = Box.getSingleBox()
+        if (msg.contains("\n")) {
+            Log.d(TAG, String.format(s, msg.replace("\n".toRegex(), "\n║ ")))
         } else {
-            val s = getBox()
-            if (msg.contains("\n")) {
-                Log.d(TAG, String.format(s, msg.replace("\n".toRegex(), "\n║ ")))
-            } else {
-                Log.d(TAG, String.format(s, msg))
-            }
+            Log.d(TAG, String.format(s, msg))
+        }
+    }
+
+    fun v(msg: String?) {
+        if (TextUtils.isEmpty(msg!!)) {
+            return
+        }
+        val s = Box.getSingleBox()
+        if (msg.contains("\n")) {
+            Log.v(TAG, String.format(s, msg.replace("\n".toRegex(), "\n║ ")))
+        } else {
+            Log.v(TAG, String.format(s, msg))
+        }
+    }
+
+    fun i(msg: String?) {
+        if (TextUtils.isEmpty(msg!!)) {
+            return
+        }
+        val s = Box.getSingleBox()
+        if (msg.contains("\n")) {
+            Log.i(TAG, String.format(s, msg.replace("\n".toRegex(), "\n║ ")))
+        } else {
+            Log.i(TAG, String.format(s, msg))
+        }
+    }
+
+    fun w(msg: String?) {
+        if (TextUtils.isEmpty(msg!!)) {
+            return
+        }
+        val s = Box.getSingleBox()
+        if (msg.contains("\n")) {
+            Log.w(TAG, String.format(s, msg.replace("\n".toRegex(), "\n║ ")))
+        } else {
+            Log.w(TAG, String.format(s, msg))
         }
     }
 
     fun e(msg: String?) {
         if (TextUtils.isEmpty(msg!!)) {
             return
-        } else {
-            val s = getBox()
-            if (msg.contains("\n")) {
-                Log.e(TAG, String.format(s, msg.replace("\n".toRegex(), "\n║ ")))
-            } else {
-                Log.e(TAG, String.format(s, msg))
-            }
         }
+        val s = Box.getSingleBox()
+        if (msg.contains("\n")) {
+            Log.e(TAG, String.format(s, msg.replace("\n".toRegex(), "\n║ ")))
+        } else {
+            Log.e(TAG, String.format(s, msg))
+        }
+    }
+
+    fun addHandler(handler: BaseHandler) {
+        handlers.add(handler)
     }
 
 }

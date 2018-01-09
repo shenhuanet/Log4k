@@ -21,7 +21,7 @@ object Box {
                     .append(Constant.MIDDLE_BORDER).append(Constant.BR)
         }
         builder.append("║ " + "Thread: " + Thread.currentThread().name).append(Constant.BR)
-                .append(Constant.MIDDLE_BORDER).append(Constant.BR)
+//                .append(Constant.MIDDLE_BORDER).append(Constant.BR)
                 .append("║ ")
                 .append(stackOffset.className)
                 .append(".")
@@ -36,6 +36,21 @@ object Box {
                 .append(Constant.MIDDLE_BORDER).append(Constant.BR)
                 .append("║ ").append("%s").append(Constant.BR)
                 .append(Constant.BOTTOM_BORDER).append(Constant.BR)
+        return builder.toString()
+    }
+
+    fun getSingleBox(): String {
+        val trace = Thread.currentThread().stackTrace
+        val stackOffset = trace[4]
+        val builder = StringBuilder()
+        builder.append("║ ")
+                .append("%s")
+                .append(" ")
+                .append(" (")
+                .append(stackOffset.fileName)
+                .append(":")
+                .append(stackOffset.lineNumber)
+                .append(")")
         return builder.toString()
     }
 
