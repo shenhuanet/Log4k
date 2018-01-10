@@ -22,8 +22,7 @@ class CollectionHandler : BaseHandler(), Formatter<Collection<*>> {
     override fun handle(obj: Any): Boolean {
         if (obj is Collection<*>) {
             val value = obj.firstOrNull()
-            val isPrimitiveType = Utils.isPrimitiveType(value)
-            if (isPrimitiveType) {
+            if (Utils.isPrimitiveType(value)) {
                 val simpleName = obj.javaClass
                 var msg = "%s size = %d" + Constant.BR
                 msg = String.format(msg, simpleName, obj.size) + "║ "

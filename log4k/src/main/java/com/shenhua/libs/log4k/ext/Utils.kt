@@ -3,25 +3,22 @@ package com.shenhua.libs.log4k.ext
 import com.shenhua.libs.log4k.LK
 
 /**
- * Created by shenhua on 2018/1/6.
- * Email shenhuanet@126.com
+ * Created by shenhua on 2018-01-06-0009.
+ * @author shenhua
+ *         Email shenhuanet@126.com
  */
 object Utils {
 
     fun getStackOffset(): StackTraceElement {
-        val trace = Thread.currentThread().stackTrace
-        var i = Constant.MIN_STACK_OFFSET
-        var result = 0
-        while (i < trace.size) {
-            val st = trace[i]
-            val name = st.className
-            if (name != Utils::class.java.name && name != LK::class.java.name) {
-                result = --i - 2
+        val stackElements = Thread.currentThread().stackTrace
+        var index = 0
+        for (i in stackElements.indices) {
+            if (stackElements[i].className == LK::class.java.name) {
+                index = i + 1
                 break
             }
-            i++
         }
-        return trace[result]
+        return stackElements[index]
     }
 
     fun isPrimitiveType(value: Any?): Boolean = when (value) {

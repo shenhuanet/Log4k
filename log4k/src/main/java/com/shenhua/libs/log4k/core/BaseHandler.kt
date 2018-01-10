@@ -1,8 +1,9 @@
 package com.shenhua.libs.log4k.core
 
 /**
- * Created by shenhua on 2018/1/6.
- * Email shenhuanet@126.com
+ * Created by shenhua on 2018-01-06-0009.
+ * @author shenhua
+ *         Email shenhuanet@126.com
  */
 abstract class BaseHandler {
 
@@ -16,9 +17,7 @@ abstract class BaseHandler {
          * 当前处理者未处理，传递到下一处理者
          */
         if (!handle(obj)) {
-            if (this.successor != null) {
-                this.successor!!.handle(obj)
-            }
+            this.successor!!.handler(obj)
         }
     }
 

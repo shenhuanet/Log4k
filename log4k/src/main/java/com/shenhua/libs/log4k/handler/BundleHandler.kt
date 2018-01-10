@@ -23,9 +23,8 @@ class BundleHandler : BaseHandler() {
             val map = HashMap<String, Any>()
             val gson = Gson()
             for (key in obj.keySet()) {
-                val isPrimitiveType = Utils.isPrimitiveType(obj.get(key))
                 try {
-                    if (isPrimitiveType) {
+                    if (Utils.isPrimitiveType(obj.get(key))) {
                         map.put(key.toString(), obj.get(key))
                     } else {
                         map.put(key.toString(), JSONObject(gson.toJson(obj.get(key))))

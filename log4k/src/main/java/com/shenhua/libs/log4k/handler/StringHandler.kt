@@ -11,8 +11,9 @@ import org.json.JSONException
 import org.json.JSONObject
 
 /**
- * Created by shenhua on 2018/1/6.
- * Email shenhuanet@126.com
+ * Created by shenhua on 2018-01-08-0009.
+ * @author shenhua
+ *         Email shenhuanet@126.com
  */
 class StringHandler : BaseHandler(), Formatter<String> {
 

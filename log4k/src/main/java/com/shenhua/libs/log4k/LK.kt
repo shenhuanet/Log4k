@@ -25,9 +25,7 @@ object LK {
         handlers.add(PojoHandler())
         (0 until handlers.size)
                 .filter { it > 0 }
-                .forEach {
-                    handlers[it - 1].successor = handlers[it]
-                }
+                .forEach { handlers[it - 1].successor = handlers[it] }
         baseHandler = handlers[0]
     }
 

@@ -4,8 +4,9 @@ import com.shenhua.libs.log4k.ext.Constant
 import com.shenhua.libs.log4k.ext.Utils
 
 /**
- * Created by shenhua on 2018/1/6.
- * Email shenhuanet@126.com
+ * Created by shenhua on 2018-01-06-0009.
+ * @author shenhua
+ *         Email shenhuanet@126.com
  */
 object Box {
 
@@ -21,7 +22,6 @@ object Box {
                     .append(Constant.MIDDLE_BORDER).append(Constant.BR)
         }
         builder.append("║ " + "Thread: " + Thread.currentThread().name).append(Constant.BR)
-//                .append(Constant.MIDDLE_BORDER).append(Constant.BR)
                 .append("║ ")
                 .append(stackOffset.className)
                 .append(".")
