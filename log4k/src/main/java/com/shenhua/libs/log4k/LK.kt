@@ -4,11 +4,7 @@ import android.text.TextUtils
 import android.util.Log
 import com.shenhua.libs.log4k.core.BaseHandler
 import com.shenhua.libs.log4k.core.Box
-import com.shenhua.libs.log4k.handler.BundleHandler
-import com.shenhua.libs.log4k.handler.MapHandler
-import com.shenhua.libs.log4k.handler.PojoHandler
-import com.shenhua.libs.log4k.handler.StringHandler
-import java.util.*
+import com.shenhua.libs.log4k.handler.*
 
 /**
  * Created by shenhua on 2018/1/6.
@@ -17,17 +13,21 @@ import java.util.*
 object LK {
 
     val TAG = "LK"
-    private var handlers: LinkedList<BaseHandler> = LinkedList()
+    private var handlers = ArrayList<BaseHandler>()
     private var baseHandler: BaseHandler
 
     init {
         handlers.add(StringHandler())
+        handlers.add(CollectionHandler())
         handlers.add(MapHandler())
         handlers.add(BundleHandler())
+        handlers.add(IntentHandler())
         handlers.add(PojoHandler())
         (0 until handlers.size)
                 .filter { it > 0 }
-                .forEach { handlers[it - 1].successor = (handlers[it]) }
+                .forEach {
+                    handlers[it - 1].successor = handlers[it]
+                }
         baseHandler = handlers[0]
     }
 
@@ -98,8 +98,12 @@ object LK {
         }
     }
 
-    fun addHandler(handler: BaseHandler) {
-        handlers.add(handler)
+    fun addHandler(handler: BaseHandler): LK {
+        handlers.add(handlers.size - 1, handler)
+        (0 until handlers.size)
+                .filter { it > 0 }
+                .forEach { handlers[it - 1].successor = handlers[it] }
+        return this
     }
 
 }
