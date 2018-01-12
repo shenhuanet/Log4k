@@ -27,7 +27,7 @@ class StringHandler : BaseHandler(), Formatter<String> {
     }
 
     override fun format(t: String): String {
-        var message = ""
+        var message: String
         try {
             when {
                 t.startsWith("{") -> {

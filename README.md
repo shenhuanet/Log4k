@@ -7,6 +7,9 @@ Log output framework based on Chain of Responsibility model for developing Andro
 
 ![logo](https://raw.githubusercontent.com/shenhuanet/Log4k/master/art/log4k.png)
 
+## Usage
+
+
 ## About Me
 CSDN：http://blog.csdn.net/klxh2009<br>
 JianShu：http://www.jianshu.com/u/12a81897d5bc
