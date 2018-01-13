@@ -35,13 +35,17 @@ dependencies {
 repositories {
     mavenCentral()
 }
+tasks.withType(Javadoc) {
+    excludes = ['**/*.kt']
+}
+
 ext {
     repoOrg = 'shenhuanetos'
     repoGroup = 'maven'
     repoPkg = 'Log4k'
     devName = 'shenhuanet'
     devMail = 'shenhuanet@126.com'
-    libGroup = 'cn.neocross.libs'
+    libGroup = 'com.shenhua.libs'
     libArtifact = 'log4k'
     libDesc = 'Log output framework based on Chain of Responsibility model for developing Android using the kotlin language.'
     web = 'https://github.com/shenhuanet/Log4k'

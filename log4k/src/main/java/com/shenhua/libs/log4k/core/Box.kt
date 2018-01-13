@@ -11,7 +11,6 @@ import com.shenhua.libs.log4k.ext.Utils
 object Box {
 
     private var header: String? = ""
-    var level = LogLevel.DEBUG
 
     fun getBox(): String {
         val stackOffset = Utils.getStackOffset()
@@ -54,7 +53,4 @@ object Box {
         return builder.toString()
     }
 
-    enum class LogLevel {
-        DEBUG, ERROR, WARN, INFO
-    }
 }

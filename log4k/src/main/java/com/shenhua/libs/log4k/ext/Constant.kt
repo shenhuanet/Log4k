@@ -11,7 +11,6 @@ object Constant {
     private val TOP_LEFT_CORNER = '╔'
     private val BOTTOM_LEFT_CORNER = '╚'
     private val MIDDLE_CORNER = '╟'
-    private val HORIZONTAL_DOUBLE_LINE = '║'
     private val DOUBLE_DIVIDER = "════════════════════════════════════════════"
     private val SINGLE_DIVIDER = "────────────────────────────────────────────"
 
@@ -21,6 +20,5 @@ object Constant {
     val BR = System.getProperty("line.separator")
 
     val JSON_INDENT = 2
-    val MIN_STACK_OFFSET = 10
 
 }
