@@ -50,7 +50,7 @@ LK.addHandler(handler: BaseHandler)
 val string = "Hello world."
 LK.log(string)
 ```
-![](https://github.com/shenhuanet/Log4k-idea/blob/master/art/001.png)
+![](https://github.com/shenhuanet/Log4k/blob/master/art/001.png)
 
 ```kotlin
 val json = "{\n" +
@@ -70,7 +70,7 @@ val json = "{\n" +
         "}"
 LK.log(json)
 ```
-![](https://github.com/shenhuanet/Log4k-idea/blob/master/art/002.png)
+![](https://github.com/shenhuanet/Log4k/blob/master/art/002.png)
 
 ```kotlin
 val ids = ArrayList<String>()
@@ -78,7 +78,7 @@ ids.add("123")
 ids.add("456")
 LK.log(ids)
 ```
-![](https://github.com/shenhuanet/Log4k-idea/blob/master/art/003.png)
+![](https://github.com/shenhuanet/Log4k/blob/master/art/003.png)
 
 ```kotlin
 val users = ArrayList<User>()
@@ -86,7 +86,7 @@ users.add(User("zhangsan", 12))
 users.add(User("lisi", 14))
 LK.log(users)
 ```
-![](https://github.com/shenhuanet/Log4k-idea/blob/master/art/004.png)
+![](https://github.com/shenhuanet/Log4k/blob/master/art/004.png)
 
 ```kotlin
 val map = HashMap<String, Any>()
@@ -94,7 +94,7 @@ map.put("abc", 123)
 map.put("def", true)
 LK.log(map)
 ```
-![](https://github.com/shenhuanet/Log4k-idea/blob/master/art/005.png)
+![](https://github.com/shenhuanet/Log4k/blob/master/art/005.png)
 
 ```kotlin
 val bundle = Bundle()
@@ -102,25 +102,25 @@ bundle.putInt("a", 10)
 bundle.putSerializable("user", user)
 LK.log(bundle)
 ```
-![](https://github.com/shenhuanet/Log4k-idea/blob/master/art/006.png)
+![](https://github.com/shenhuanet/Log4k/blob/master/art/006.png)
 
 ```kotlin
 val intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"))
 LK.log(intent)
 ```
-![](https://github.com/shenhuanet/Log4k-idea/blob/master/art/007.png)
+![](https://github.com/shenhuanet/Log4k/blob/master/art/007.png)
 
 ```kotlin
 val uri = Uri.parse("content://" + "com.shenhua.libs.log4k" + "/user")
 LK.log(uri)
 ```
-![](https://github.com/shenhuanet/Log4k-idea/blob/master/art/008.png)
+![](https://github.com/shenhuanet/Log4k/blob/master/art/008.png)
 
 ```kotlin
 val string = "Hello world."
 LK.d(string)
 ```
-![](https://github.com/shenhuanet/Log4k-idea/blob/master/art/009.png)
+![](https://github.com/shenhuanet/Log4k/blob/master/art/009.png)
 
 ```kotlin
 class ThrowableHandler : BaseHandler(), Formatter<Throwable> {
@@ -145,7 +145,7 @@ class ThrowableHandler : BaseHandler(), Formatter<Throwable> {
 LK.addHandler(ThrowableHandler())
 LK.log(NullPointerException("This is a NullPointerException."))
 ```
-![](https://github.com/shenhuanet/Log4k-idea/blob/master/art/010.png)
+![](https://github.com/shenhuanet/Log4k/blob/master/art/010.png)
 
 ## About Me
 CSDN：http://blog.csdn.net/klxh2009<br>
